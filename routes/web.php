@@ -19,6 +19,7 @@ use App\Http\Controllers\BlogController;
 use App\Http\Controllers\Admin\PostController;
 use App\Http\Livewire\Admin\Users\Users;
 
+Route::get('/sitemap.xml', [SiteController::class, 'sitemap']);
 
 Route::get('/clear', function () {
     Artisan::call('cache:clear');

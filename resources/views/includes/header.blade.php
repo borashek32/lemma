@@ -1,6 +1,13 @@
 <div class="d-flex flex-column flex-md-row align-items-center
 p-2 px-md-4 mb-3 border-bottom shadow-sm navbar sticky-top navbar-light bg-light">
-    <h5 class="my-0 text-dark mr-md-auto font-weight-normal z-40 ml-0 mt-0 bg-gray-400"><a href="/">Лемма-авто</a></h5>
+    <h5 class="my-0 text-dark mr-md-auto font-weight-normal z-40 ml-0 mt-0 bg-gray-400">
+        <a href="/">
+            Лемма-авто
+        </a>
+    </h5>
+    <h7>
+
+    </h7>
 
     <nav class="my-2 my-md-0 mr-md-3">
 {{--        <a class="p-2 text-dark" href="{{ route('services') }}">Наши услуги</a>--}}
@@ -12,6 +19,8 @@ p-2 px-md-4 mb-3 border-bottom shadow-sm navbar sticky-top navbar-light bg-light
         <a class="p-2 text-dark" href="{{ route('reviews') }}">Отзывы</a>
 
         <a class="p-2 text-dark" href="{{ route('law') }}">Гарантии</a>
+
+        <a class="p-2 text-dark" href="{{ route('requisites') }}">Реквизиты</a>
 
         <a class="p-2 text-dark" href="{{ route('contact') }}">Контакты</a>
     </nav>

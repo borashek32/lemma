@@ -30,8 +30,12 @@
                         @include('includes.messages_success')
 
                         <div class="phone">
-                            Позвоните нам:<br>
-                            <a href="tel:+79999999999" class="textAddress">+7 999 9999999</a>
+                            <a href="tel:+79999999999" class="textAddress">
+                                +7 999 9999999
+                            </a><br>
+                            <a href="mailto:mail@lemma-auto.ru">
+                                mail@lemma-auto.ru
+                            </a>
                         </div>
                     </div>
 

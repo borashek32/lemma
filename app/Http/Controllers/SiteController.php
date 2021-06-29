@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
 use App\Models\Member;
+use App\Models\Post;
 use App\Models\Requisite;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
@@ -76,5 +77,11 @@ class SiteController extends Controller
         $requisites = Requisite::get();
 
         return view('site.requisites', compact('requisites'));
+    }
+
+    public function sitemap()
+    {
+        $posts = Post::orderBy('updated_at', 'DESC')->get();
+        return response()->view('sitemap', compact('posts'))->header('Content-Type', 'text/xml');
     }
 }
