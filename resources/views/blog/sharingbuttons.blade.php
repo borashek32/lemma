@@ -1,10 +1,26 @@
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+
+<!-- Your share button code -->
+<a class="fb-share-button"
+     data-href="http://127.0.0.1:8009/auto-magazine/posts/{{ $post->slug }}"
+     data-layout="button_count">
+</a>
+
+
+
 <?php
 
 function showSharer($url, $message){
 //powered by https://sharingbuttons.io/
 ?>
-<a class="resp-sharing-button__link" href="https://facebook.com/sharer/sharer.php?u=<?php echo urlencode($message) ?>%20
-            <?php echo urlencode($url) ?>" target="_blank" rel="noopener" aria-label="Share on Facebook">
+<a class="resp-sharing-button__link" href="http://127.0.0.1:8009/auto-magazine/posts/" target="_blank" rel="noopener" aria-label="Share on Facebook">
     <img src="/img/social_icons/facebook.png" width="30px" alt="Поделиться на FaceBook">
 </a>
 

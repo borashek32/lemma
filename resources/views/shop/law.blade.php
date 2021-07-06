@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.clean')
 
 @section('title-block')Наши гарантии@endsection('title-block')
 

@@ -17,7 +17,7 @@ class AdminOrderController extends Controller
         $search = request()->query('search');
         if ($search) {
             $orders = Order::where('order_number', 'LIKE', "%{$search}%")
-                ->orWhere('shipping_fullname', 'LIKE', "%{$search}%")
+//                ->orWhere('shipping_fullname', 'LIKE', "%{$search}%")
                 ->latest()
                 ->paginate(10);
         } else {

@@ -39,6 +39,7 @@
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">No.</th>
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Название</th>
+                    <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Количество постов</th>
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Действие</th>
                 </tr>
                 </thead>
@@ -47,6 +48,7 @@
                     <tr>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $loop->iteration }}</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $tag->name }}</td>
+                        <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $tag->posts->count() }}</td>
                         <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">
                             <button wire:click="edit({{ $tag->id }})" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Редактировать</button>
                             <button wire:click="delete({{ $tag->id }})" class="mt-2 bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">Удалить</button>

@@ -20,15 +20,44 @@
             </div>
         @endif
 
-        <h2 class="mb-10 font-semibold text-xl text-gray-800 leading-tight">
-            Всего заказов: {{ \App\Models\Order::count() }}
-        </h2>
-
         <div class="bg-white overflow-hidden shadow-xl sm:rounded-lg px-4 py-4">
+            <div class="flex justify-between">
+                <div class="text-left">
+                    <h2 class="mb-10 font-semibold text-xl text-gray-800 leading-tight">
+                        Всего заказов: {{ \App\Models\Order::count() }}
+                    </h2>
+                </div>
+                <div class="text-center">
+                    <form method="get" action="{{ route('admin-orders.index') }}" class="input-group mb-3">
+                        <div class="flex">
+                            <input type="text" class="shadow appearance-none border rounded w-100 py-2 px-3 text-gray-700
+            leading-tight focus:outline-none focus:shadow-outline mr-4 "
+                                   placeholder="Поиск" aria-label="Username" id="search" name="search"
+                                   aria-describedby="basic-addon1">
+
+                            <button type="submit" class="shadow appearance-none border ml-2 rounded w-20 h-9 text-center py-2 px-3 text-gray-700
+            leading-tight focus:outline-none focus:shadow-outline bg-blue-200">
+                                Поиск
+                            </button>
+
+                            <a href="{{ route('posts.index') }}">
+                                <button type="submit" class="ml-4 shadow appearance-none border rounded w-20 h-9 text-center py-2 px-3 text-gray-700
+            leading-tight focus:outline-none focus:shadow-outline bg-red-200">
+                                    Сброс
+                                </button>
+                            </a>
+                        </div>
+                        @error('search')<span class="text-red-500">{{ $message }}</span>@enderror
+                    </form>
+                </div>
+            </div>
+
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">
                         <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">№ заказа</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Товары в закезе</th>
+                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">ФИО клиента</th>
                         <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Стоимость</th>
                         <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Статус</th>
                         <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Способ доставки</th>
@@ -40,6 +69,12 @@
                     @foreach($orders as $order)
                         <tr>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $order->order_number }}</td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                                @foreach($order->products as $product)
+                                    {{ $product->title }}<br>
+                                @endforeach
+                            </td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $order->user->name }}</td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ number_format($order->total, 2) }} руб.</td>
                             <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">
                             <!-- This is an example component -->
@@ -49,7 +84,7 @@
                                             {{ $order->status=='completed' ? 'checked' : '' }} name="status" value="{{ $order->id }}"/>
                                 </label>
                             </td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $order->contact->address }}</td>
+                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $order->contact->address }}</td>
 
 
                             <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">

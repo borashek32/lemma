@@ -52,4 +52,9 @@ class Post extends Model
     {
         return $this->hasMany(Mailing::class);
     }
+
+    public function tags()
+    {
+        return $this->belongsToMany(Tag::class);
+    }
 }

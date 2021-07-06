@@ -40,9 +40,12 @@
 
             <li class="list-group-item trix-content">
                 <p>Поделиться:</p>
+
+
+
                 @include('blog.sharingbuttons')
                 <?php
-                showSharer("http://localhost:8009/auto-magazine", "Новый пост на lemma-auto.ru");
+                showSharer("http://http://127.0.0.1:8009/auto-magazine", "Новый пост на lemma-auto.ru");
                 ?>
             </li>
 

@@ -208,3 +208,17 @@ pre
         display: none;
     }
 }
+
+.fb-share-lemma {
+    background-image: url("/img/social_icons/facebook.png");
+}
+
+/*.up {*/
+/*    display: none;*/
+/*    position: fixed;*/
+/*    bottom: 140px*/
+/*}*/
+
+/*.up img {*/
+/*    width: 100%*/
+/*}*/

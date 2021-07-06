@@ -33,9 +33,9 @@ Route::get('/clear', function () {
 // COMMON ROUTES
 Route::get('/', [AutopartController::class, 'autoparts'])->name('auto-parts');
 Route::post('/', [SiteController::class, 'submit'])->name('contact-form');
-//Route::get('/services', [SiteController::class, 'services'])->name('services');
-//Route::get('/before', [SiteController::class, 'before'])->name('before');
-//Route::get('/possibilities', [SiteController::class, 'possibilities'])->name('possibilities');
+Route::get('/services', [SiteController::class, 'services'])->name('services');
+Route::get('/before', [SiteController::class, 'before'])->name('before');
+Route::get('/possibilities', [SiteController::class, 'possibilities'])->name('possibilities');
 Route::get('/contact', [SiteController::class, 'contact'])->name('contact');
 Route::get('/partners', [AutopartController::class, 'partners'])->name('partners');
 Route::get('/law', [AutopartController::class, 'law'])->name('law');

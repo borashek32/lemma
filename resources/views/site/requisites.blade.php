@@ -1,4 +1,4 @@
-@extends('layouts.site')
+@extends('layouts.clean')
 @section('title-block')Реквизиты@endsection('title-block')
 @section('content')
     <div class="row">

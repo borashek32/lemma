@@ -3,9 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Mail\ContactMail;
+use App\Models\Category;
 use App\Models\Member;
 use App\Models\Post;
 use App\Models\Requisite;
+use App\Models\Tag;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
@@ -82,6 +84,10 @@ class SiteController extends Controller
     public function sitemap()
     {
         $posts = Post::orderBy('updated_at', 'DESC')->get();
-        return response()->view('sitemap', compact('posts'))->header('Content-Type', 'text/xml');
+        $categories = Category::orderBy('updated_at', 'DESC')->get();
+        $tags = Tag::orderBy('created_at', 'DESC')->get();
+
+        return response()->view('sitemap', compact('posts', 'categories', 'tags'))
+            ->header('Content-Type', 'text/xml');
     }
 }

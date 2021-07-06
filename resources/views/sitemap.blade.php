@@ -32,4 +32,14 @@
             <loc>https://lemma-auto.ru/auto-magazine/posts/{{ $post->slug }}</loc>
         </url>
     @endforeach
+    @foreach($categories as $category)
+        <url>
+            <loc>https://lemma-auto.ru/auto-magazine/category/{{ $category->slug }}</loc>
+        </url>
+    @endforeach
+    @foreach($tags as $tag)
+        <url>
+            <loc>https://lemma-auto.ru/auto-magazine/category/{{ $tag->slug }}</loc>
+        </url>
+    @endforeach
 </urlset>

@@ -5,7 +5,7 @@
         <h3 style="margin-bottom: 40px;text-align: center">Тег: {{ $tag->name }}</h3>
 
         <div class="row">
-            @forelse($posts as $post)
+            @forelse($tag->posts as $post)
                 @include('includes.blog.card-post')
             @empty
                 <p class="text-center" style="margin-left: 6px">

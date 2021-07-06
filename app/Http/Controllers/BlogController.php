@@ -50,7 +50,8 @@ class BlogController extends Controller
 
     public function tag($slug)
     {
-        $tag = Tag::findFromString($slug);
+        $tag = Tag::where($slug);
+
         $search = request()->query('search');
         if ($search) {
             $posts = Post::withAnyTags([$tag])
