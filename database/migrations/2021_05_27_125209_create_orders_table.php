@@ -23,8 +23,10 @@ class CreateOrdersTable extends Migration
             $table->foreignId('payment_id')->unsigned();
             $table->foreignId('contact_id')->unsigned();
             $table->string('notes')->nullable();
-
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
+
+            // shipment
+            $table->enum('shipment_method')
             $table->timestamps();
         });
     }

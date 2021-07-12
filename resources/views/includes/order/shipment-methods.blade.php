@@ -1,5 +1,5 @@
 <h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
-    Выберите способ доставки
+    Выберите адрес пункта самовывоза
 </h1>
 
 <div class="bg-gray-200">

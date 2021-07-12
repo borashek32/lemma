@@ -28,11 +28,11 @@
                 </a>
             </li>
 
-            <li class="list-group-item" style="font-size:12px;text-align:center;padding:3px;">
-                @foreach($post->tags as $tag)
-                    <a href="{{ route('tag', $tag->slug) }}">#{{ $tag->name }}</a>
-                @endforeach
-            </li>
+{{--            <li class="list-group-item" style="font-size:12px;text-align:center;padding:3px;">--}}
+{{--                @foreach($post->tags as $tag)--}}
+{{--                    <a href="{{ route('tag', $tag->slug) }}">#{{ $tag->name }}</a>--}}
+{{--                @endforeach--}}
+{{--            </li>--}}
 
             <li class="list-group-item" style="font-size:12px;text-align:center;padding:3px;">
                 <a href="/auto-magazine/posts/{{ $post->slug }}">

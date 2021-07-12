@@ -42,6 +42,12 @@
             #sidebar:hover span {
                 opacity: 1;
             }
+
+            @media (max-width: 1362px) {
+                #sidebar {
+                    display: none;
+                }
+            }
         </style>
 
         <!-- Scripts -->

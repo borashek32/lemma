@@ -11,7 +11,7 @@
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
 
-            Доставка и оплата
+            Доставка
         </h2>
     </x-slot>
 
@@ -32,9 +32,9 @@
                     </div>
                 </div>
 
-{{--                <div class="" id="shipping_address">--}}
-{{--                    @include('includes.order.shipment-address')--}}
-{{--                </div>--}}
+                <div class="" id="shipping_address">
+                    @include('includes.order.shipment-address')
+                </div>
 
                 <div class="flex items-center mt-6 justify-between">
                     <button id="submit"

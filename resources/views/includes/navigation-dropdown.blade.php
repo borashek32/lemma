@@ -3,6 +3,13 @@
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
             <div class="flex">
+                <style>
+                    @media (max-width: 1132px) {
+                        #line {
+                            display: none;
+                        }
+                    }
+                </style>
                 <!-- Logo -->
                 <div class="flex-shrink-0 flex items-center mt-5">
                     <a href="{{ route('auto-parts') }}">
@@ -10,40 +17,40 @@
                     </a>
                 </div>
                 <!-- Navigation Links -->
-                <div class="text-center hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                <div id="line" class="text-center hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                     <x-jet-nav-link href="{{ route('welcome') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Добро пожаловать') }}
                     </x-jet-nav-link>
                 </div>
-                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                     <x-jet-nav-link href="{{ route('profile') }}" :active="request()->routeIs('dashboard')">
                         {{ __('Профиль') }}
                     </x-jet-nav-link>
                 </div>
                 @if(Auth::user()->hasRole('user'))
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                         <x-jet-nav-link href="{{ route('cart.index') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Корзина') }}
                             ({{ Cart::count() }})
                         </x-jet-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                         <x-jet-nav-link href="{{ route('orders.all') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Ваши заказы') }}
                             ({{ Auth::user()->orders->count() }})
                         </x-jet-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                         <x-jet-nav-link href="{{ route('addresses.index') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Контакты') }}
                         </x-jet-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
                         <x-jet-nav-link href="{{ route('mailings.index') }}" :active="request()->routeIs('dashboard')">
                             {{ __('Подписка') }}
                         </x-jet-nav-link>
                     </div>
-                    <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 30px">
+                    <div id="line" class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 30px">
                         <form method="POST" action="{{ route('logout') }}">
                             @csrf
 
@@ -309,7 +316,7 @@
                 </x-jet-dropdown>
             </div>
 
-            <!-- Hamburger -->
+<!-- Hamburger -->
             <div class="-mr-2 flex items-center sm:hidden">
                 <button @click="open = ! open" class="inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 focus:text-gray-500 transition duration-150 ease-in-out">
                     <svg class="h-6 w-6" stroke="currentColor" fill="none" viewBox="0 0 24 24">
@@ -325,7 +332,7 @@
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
             <x-jet-responsive-nav-link href="{{ route('profile.show') }}">
-                {{ __('Dashboard') }}
+                {{ __('Панель упарления') }}
             </x-jet-responsive-nav-link>
         </div>
 
@@ -342,19 +349,122 @@
                 </div>
             </div>
 
+            @if(Auth::user()->hasRole('user'))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('cart.index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Корзина') }}
+                        ({{ Cart::count() }})
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('orders.all') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Ваши заказы') }}
+                        ({{ Auth::user()->orders->count() }})
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('addresses.index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Контакты') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('mailings.index') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Подписка') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 30px">
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <x-jet-nav-link href="{{ route('logout') }}" :active="request()->routeIs('dashboard')"
+                                        onclick="event.preventDefault();
+                                                this.closest('form').submit();">
+                            {{ __('Выйти') }}
+                        </x-jet-nav-link>
+                    </form>
+                </div>
+            @endif
+            @if(Auth::user()->hasRole('super-admin'))
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('auto-parts-admin') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Автозапчасти') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('auto-parts-admin') }}" :active="request()->routeIs('dashboard')">
+                        {{ __('Все пользователи') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="#">
+                        {{ __('Клиенты') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('reviews-admin') }}">
+                        {{ __('Отзывы клиентов') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('admin-orders.index') }}">
+                        {{ __('Заказы') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('posts.index') }}">
+                        {{ __('Посты') }}
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('cats') }}">
+                        {{ __('Категории') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('comments-admin') }}">
+                        {{ __('Комментарии') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('offices') }}">
+                        {{ __('Офисы') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('members.index') }}">
+                        {{ __('Команда') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('requisites-admin') }}">
+                        {{ __('Реквизиты') }}
+                    </x-jet-nav-link>
+                </div>
+                <div class="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex" style="margin-top: 20px">
+                    <x-jet-nav-link href="{{ route('advertisements.index') }}">
+                        {{ __('Реклама') }}
+                    </x-jet-nav-link>
+                </div>
+            @endif
+
             <div class="mt-3 space-y-1">
                 <!-- Account Management -->
                 <x-jet-responsive-nav-link href="{{ route('profile.show') }}" :active="request()->routeIs('profile.show')">
                     {{ __('Профиль') }}
                 </x-jet-responsive-nav-link>
 
-            {{--                @if (Laravel\Jetstream\Jetstream::hasApiFeatures())--}}
-            {{--                    <x-jet-responsive-nav-link href="{{ route('api-tokens.index') }}" :active="request()->routeIs('api-tokens.index')">--}}
-            {{--                        {{ __('API Tokens') }}--}}
-            {{--                    </x-jet-responsive-nav-link>--}}
-            {{--                @endif--}}
+                @if(Auth::user()->hasRole('user'))
+                    <x-jet-responsive-nav-link href="{{ route('cart.index') }}" :active="request()->routeIs('profile.show')">
+                        {{ __('Корзина') }}
+                        ({{ Cart::count() }})
+                    </x-jet-responsive-nav-link>
+                    <x-jet-responsive-nav-link href="{{ route('cart.index') }}" :active="request()->routeIs('profile.show')">
+                        {{ __('Корзина') }}
+                        ({{ Cart::count() }})
+                    </x-jet-responsive-nav-link>
+                @endif
 
-            <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
 
@@ -364,35 +474,6 @@
                         {{ __('Выйти') }}
                     </x-jet-responsive-nav-link>
                 </form>
-
-                <!-- Team Management -->
-                @if (Laravel\Jetstream\Jetstream::hasTeamFeatures())
-                    <div class="border-t border-gray-200"></div>
-
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Manage Team') }}
-                    </div>
-
-                    <!-- Team Settings -->
-                    <x-jet-responsive-nav-link href="{{ route('teams.show', Auth::user()->currentTeam->id) }}" :active="request()->routeIs('teams.show')">
-                        {{ __('Team Settings') }}
-                    </x-jet-responsive-nav-link>
-
-                    <x-jet-responsive-nav-link href="{{ route('teams.create') }}" :active="request()->routeIs('teams.create')">
-                        {{ __('Create New Team') }}
-                    </x-jet-responsive-nav-link>
-
-                    <div class="border-t border-gray-200"></div>
-
-                    <!-- Team Switcher -->
-                    <div class="block px-4 py-2 text-xs text-gray-400">
-                        {{ __('Switch Teams') }}
-                    </div>
-
-                    @foreach (Auth::user()->allTeams() as $team)
-                        <x-jet-switchable-team :team="$team" component="jet-responsive-nav-link" />
-                    @endforeach
-                @endif
             </div>
         </div>
     </div>

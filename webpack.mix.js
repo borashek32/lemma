@@ -1,7 +1,9 @@
 const mix = require('laravel-mix');
-//
-// mix.postCss('resources/css/app.css', 'public/css');
-//
+
+mix.postCss('resources/css/site.css', 'public/css', [
+    require('autoprefixer')
+]);
+
 // mix.postCss('resources/css/colorbox.css', 'public/css');
 //
 // mix.postCss('resources/css/filepond.css', 'public/css');

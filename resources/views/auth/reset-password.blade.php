@@ -2,6 +2,11 @@
     <x-jet-authentication-card>
         <x-slot name="logo">
             <a href="{{ route('auto-parts') }}"><img src="/img/icon.png" width="100px"></a>
+            <a href="{{ route('auto-parts') }}">
+                <p class="text-center">
+                    Верунться на<br>главную
+                </p>
+            </a>
         </x-slot>
 
         <x-jet-validation-errors class="mb-4" />
