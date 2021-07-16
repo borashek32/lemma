@@ -34,7 +34,8 @@
                     </svg>
                 </div>
             </div>
-            <table class="table-fixed w-full">
+            @if(\App\Models\Review::all()->count() > 0)
+                <table class="table-fixed w-full">
                 <thead>
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">No.</th>
@@ -71,6 +72,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>На сайте пока нет отзывов.</p>
+            @endif
 {{--            <div class="mt-4">--}}
 {{--                {{ $reviews->links() }}--}}
 {{--            </div>--}}

@@ -16,15 +16,15 @@
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
 
                     <div class="mb-4">
-                        <label for="address" class="block text-gray-700 text-sm font-bold mb-2">
-                            Адрес:
+                        <label for="shipping_fullname" class="block text-gray-700 text-sm font-bold mb-2">
+                            Имя:
                         </label>
 
-                        <input type="text" value="{{ old('address') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
-                            leading-tight focus:outline-none focus:shadow-outline @error('address') border-red-500
-                            @enderror" id="address" name="address" required placeholder="Введите адрес">
+                        <input type="text" value="{{ old('shipping_fullname') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                            leading-tight focus:outline-none focus:shadow-outline @error('shipping_fullname') border-red-500
+                            @enderror" id="shipping_fullname" name="shipping_fullname" required placeholder="Введите полное имя">
 
-                        @error('address')
+                        @error('shipping_fullname')
                             <div class="mt-2 text-red-500 mb-2 text-small">
                                 {{ $message }}
                             </div>
@@ -32,15 +32,15 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">
-                            Телефон:
+                        <label for="shipping_city" class="block text-gray-700 text-sm font-bold mb-2">
+                            Город:
                         </label>
 
-                        <input type="text" value="{{ old('phone') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
-                            leading-tight focus:outline-none focus:shadow-outline @error('phone') border-red-500
-                            @enderror" id="phone" name="phone" placeholder="Введите телефон" required>
+                        <input type="text" value="{{ old('shipping_city') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                            leading-tight focus:outline-none focus:shadow-outline @error('shipping_city') border-red-500
+                            @enderror" id="shipping_city" name="shipping_city" required placeholder="Введите город">
 
-                        @error('phone')
+                        @error('shipping_city')
                         <div class="mt-2 text-red-500 mb-2 text-small">
                             {{ $message }}
                         </div>
@@ -48,15 +48,47 @@
                     </div>
 
                     <div class="mb-4">
-                        <label for="phone" class="block text-gray-700 text-sm font-bold mb-2">
-                            Примечание:
+                        <label for="shipping_postcode" class="block text-gray-700 text-sm font-bold mb-2">
+                            Индекс:
                         </label>
 
-                        <input type="text" value="{{ old('notes') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
-                            leading-tight focus:outline-none focus:shadow-outline @error('notes') border-red-500
-                            @enderror" id="notes" name="notes" placeholder="Заметки">
+                        <input type="text" value="{{ old('shipping_postcode') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                            leading-tight focus:outline-none focus:shadow-outline @error('shipping_postcode') border-red-500
+                            @enderror" id="shipping_postcode" name="shipping_postcode" required placeholder="Введите индекс">
 
-                        @error('notes')
+                        @error('shipping_postcode')
+                        <div class="mt-2 text-red-500 mb-2 text-small">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="shipping_address" class="block text-gray-700 text-sm font-bold mb-2">
+                            Адрес:
+                        </label>
+
+                        <input type="text" value="{{ old('shipping_address') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                            leading-tight focus:outline-none focus:shadow-outline @error('shipping_address') border-red-500
+                            @enderror" id="shipping_address" name="shipping_address" required placeholder="Введите адрес">
+
+                        @error('shipping_address')
+                        <div class="mt-2 text-red-500 mb-2 text-small">
+                            {{ $message }}
+                        </div>
+                        @enderror
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="shipping_phone" class="block text-gray-700 text-sm font-bold mb-2">
+                            Адрес:
+                        </label>
+
+                        <input type="text" value="{{ old('shipping_phone') }}" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700
+                            leading-tight focus:outline-none focus:shadow-outline @error('shipping_phone') border-red-500
+                            @enderror" id="shipping_phone" name="shipping_phone" required placeholder="Введите телефон">
+
+                        @error('shipping_phone')
                         <div class="mt-2 text-red-500 mb-2 text-small">
                             {{ $message }}
                         </div>

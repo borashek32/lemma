@@ -48,6 +48,22 @@
                     display: none;
                 }
             }
+             .card-order {
+                 display: none;
+             }
+            @media (max-width: 900px) {
+                .iteration {
+                    display: none;
+                }
+            }
+            @media (max-width: 782px) {
+                .card-order {
+                    display: block;
+                }
+                .table-order {
+                    display: none;
+                }
+            }
         </style>
 
         <!-- Scripts -->

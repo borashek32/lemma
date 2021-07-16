@@ -31,18 +31,18 @@
                     <form method="get" action="{{ route('admin-orders.index') }}" class="input-group mb-3">
                         <div class="flex">
                             <input type="text" class="shadow appearance-none border rounded w-100 py-2 px-3 text-gray-700
-            leading-tight focus:outline-none focus:shadow-outline mr-4 "
+                                   leading-tight focus:outline-none focus:shadow-outline mr-4 "
                                    placeholder="Поиск" aria-label="Username" id="search" name="search"
                                    aria-describedby="basic-addon1">
 
                             <button type="submit" class="shadow appearance-none border ml-2 rounded w-20 h-9 text-center py-2 px-3 text-gray-700
-            leading-tight focus:outline-none focus:shadow-outline bg-blue-200">
+                                   leading-tight focus:outline-none focus:shadow-outline bg-blue-200">
                                 Поиск
                             </button>
 
                             <a href="{{ route('posts.index') }}">
                                 <button type="submit" class="ml-4 shadow appearance-none border rounded w-20 h-9 text-center py-2 px-3 text-gray-700
-            leading-tight focus:outline-none focus:shadow-outline bg-red-200">
+                                   leading-tight focus:outline-none focus:shadow-outline bg-red-200">
                                     Сброс
                                 </button>
                             </a>
@@ -52,62 +52,63 @@
                 </div>
             </div>
 
-            <table class="table-fixed w-full">
-                <thead>
-                    <tr class="bg-gray-100">
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">№ заказа</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Товары в закезе</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">ФИО клиента</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Стоимость</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Статус</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Способ доставки</th>
-                        <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Действие</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-                    @foreach($orders as $order)
-                        <tr>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $order->order_number }}</td>
-                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                                @foreach($order->products as $product)
-                                    {{ $product->title }}<br>
-                                @endforeach
-                            </td>
-                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $order->user->name }}</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ number_format($order->total, 2) }} руб.</td>
-                            <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">
-                            <!-- This is an example component -->
-                                <label class="flex items-center">
-                                    <input class="relative w-10 h-5 transition-all duration-200 ease-in-out bg-gray-400 cursor-pointer rounded-full shadow-inner outline-none appearance-none"
-                                            type="checkbox" data-on="Completed" data-off="Processing" data-toggle="toggle"
-                                            {{ $order->status=='completed' ? 'checked' : '' }} name="status" value="{{ $order->id }}"/>
-                                </label>
-                            </td>
-                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $order->contact->address }}</td>
-
-
-                            <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
-                                <div class="">
-                                    <a href="{{ route('admin-orders.edit', $order->id) }}">
-                                        <button class="mb-2 bg-blue-500 mr-2 hover:bg-blue-700 text-white font-bold py-2
-                                            px-4 rounded">
-                                            Редактировать
-                                        </button>
-                                    </a><br>
-
-                                    <form action="{{ route('admin-orders.destroy', $order['id']) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <input type="submit" value="Удалить" class="bg-red-500 hover:bg-red-700
-                                            text-white font-bold py-2 px-4 rounded">
-                                    </form>
-                                </div>
-                            </td>
+            @if(\App\Models\Order::all()->count() > 0)
+                <table class="table-fixed w-full">
+                    <thead>
+                        <tr class="bg-gray-100">
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">№ заказа</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Товары в закезе</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">ФИО клиента</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Стоимость</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Статус</th>
+                            <th class="px-6 py-3 border-b-2 border-gray-300 text-center text-sm leading-4 tracking-wider w-10">Действие</th>
                         </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                    </thead>
+
+                    <tbody>
+                        @foreach($orders as $order)
+                            <tr>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ $order->order_number }}</td>
+                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                                    @foreach($order->products as $product)
+                                        {{ $product->title }}<br>
+                                    @endforeach
+                                </td>
+                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">{{ $order->user->name }}</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">{{ number_format($order->total, 2) }} руб.</td>
+                                <td class="px-6 py-4 whitespace-no-wrap border-b border-gray-300 text-sm leading-5">
+                                <!-- This is an example component -->
+                                    <label class="flex items-center">
+                                        <input class="relative w-10 h-5 transition-all duration-200 ease-in-out bg-gray-400 cursor-pointer rounded-full shadow-inner outline-none appearance-none"
+                                                type="checkbox" data-on="Completed" data-off="Processing" data-toggle="toggle"
+                                                {{ $order->status=='completed' ? 'checked' : '' }} name="status" value="{{ $order->id }}"/>
+                                    </label>
+                                </td>
+
+                                <td class="px-6 py-4 border-b border-gray-300 text-sm leading-5">
+                                    <div class="">
+                                        <a href="{{ route('admin-orders.edit', $order->id) }}">
+                                            <button class="mb-2 bg-blue-500 mr-2 hover:bg-blue-700 text-white font-bold py-2
+                                                px-4 rounded">
+                                                Подробнее
+                                            </button>
+                                        </a><br>
+
+                                        <form action="{{ route('admin-orders.destroy', $order['id']) }}" method="POST">
+                                            @csrf
+                                            @method('DELETE')
+                                            <input type="submit" value="Удалить" class="bg-red-500 hover:bg-red-700
+                                                text-white font-bold py-2 px-4 rounded">
+                                        </form>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            @else
+                <p>На вашем сайте пока нет заказов</p>
+            @endif
         </div>
     </div>
 </div>

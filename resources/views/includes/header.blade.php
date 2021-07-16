@@ -33,7 +33,7 @@ p-2 px-md-4 mb-3 border-bottom shadow-sm navbar sticky-top navbar-light bg-light
                 @if(Auth::user()->hasRole('user'))
                     <a href="{{ route('cart.index') }}" class="text-sm ml-2 text-gray-700 underline">
                         Корзина
-                        ({{ Cart::count() }})
+                        ({{ Cart::instance('default')->count() }})
                     </a>
                 @endif
             @else

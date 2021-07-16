@@ -1,7 +1,3 @@
-<h1 class="block text-gray-700 font-bold mb-2 text-xl text-center">
-    Выберите способ оплаты
-</h1>
-
 <div class="bg-gray-200">
     <div class="flex flex-col items-center p-4 justify-center">
         <div class="flex flex-col">

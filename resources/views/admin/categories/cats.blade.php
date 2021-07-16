@@ -34,6 +34,7 @@
 {{--                    </svg>--}}
 {{--                </div>--}}
             </div>
+            @if(\App\Models\Category::all()->count() > 0)
             <table class="min-w-full">
                 <thead>
                 <tr class="bg-gray-100">
@@ -61,6 +62,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>Категорий пока не добавлено</p>
+            @endif
         </div>
     </div>
 </div>

@@ -52,4 +52,12 @@ class AdminOrderController extends Controller
             'status' => false
         ]);
     }
+
+    public function destroy(Order $order)
+    {
+        $order->delete();
+
+        return redirect('dashboard/admin-orders')
+            ->with('success', 'Заказ успешно удален');
+    }
 }

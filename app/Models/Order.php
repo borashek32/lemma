@@ -14,10 +14,17 @@ class Order extends Model
         'status',
         'total',
         'product_count',
-        'contact_id',
         'payment_method',
         'notes',
-        'user_id'
+        'user_id',
+
+        'contact_id',
+        'shipping_fullname',
+        'shipping_city',
+        'shipping_postcode',
+        'shipping_address',
+        'shipping_phone',
+        'shipping_notes'
     ];
 
     public function products()

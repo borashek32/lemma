@@ -15,9 +15,11 @@ class CreateAddressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->id();
-            $table->string('address', 500);
-            $table->string('phone', 20);
-            $table->string('notes', 1000)->nullable();
+            $table->string('shipping_fullname');
+            $table->string('shipping_city');
+            $table->string('shipping_postcode');
+            $table->string('shipping_address');
+            $table->string('shipping_phone');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });

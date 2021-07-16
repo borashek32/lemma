@@ -60,6 +60,6 @@ class MemberController extends Controller
     {
        $member->delete();
 
-        return redirect('dashboard/members')->with('success', 'Информация о сотруднике была успешно удалена');
+       return redirect('dashboard/members')->with('success', 'Информация о сотруднике была успешно удалена');
     }
 }

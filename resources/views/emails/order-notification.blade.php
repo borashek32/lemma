@@ -8,7 +8,11 @@
 Итоговая стоимость: {{ $order->total }} руб.
 <br>
 <br>
-Доставка: {{ $order->contact->address }}
+@if($order->contact_id)
+    Адрес пункта выдачи: {{ $order->contact->address }}
+@else
+    Адресс доставки: {{ $order->shipping_fullname }}, {{ $order->shipping_city }}, {{ $order->postcode }}, {{ $order->shipping_address }}, {{ $order->shipping_phone }}, {{ $order->notes }}
+@endif
 <br>
 <br>
 Оплата: {{ $order->payment->payment_method }}

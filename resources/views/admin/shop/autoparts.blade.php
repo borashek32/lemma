@@ -44,7 +44,8 @@
                     @include('includes.admin.prices')
                 </div>
             </div>
-            <table class="table-fixed w-full">
+            @if(\App\Models\Product::all()->count() > 0)
+                <table class="table-fixed w-full">
                 <thead>
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 text-center border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Дата<br>добавления в бд</th>
@@ -75,6 +76,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>На сайте пока нет товаров.</p>
+            @endif
             <div class="mt-4">
                 {{ $products->links() }}
             </div>

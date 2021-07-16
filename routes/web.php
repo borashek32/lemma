@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\AdvertisementController;
 use App\Http\Controllers\Admin\MemberController;
 use App\Http\Controllers\Admin\AdminOrderController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\Order\SaveForLaterController;
 use App\Http\Livewire\Admin\Blog\Tags;
 use App\Http\Livewire\Admin\Contacts\Contacts;
 use App\Http\Livewire\Admin\Shop\Products;
@@ -93,6 +94,14 @@ Route::delete('/dashboard/cart/{product}', [\App\Http\Controllers\Order\CartCont
     ->name('cart.destroy')->middleware('auth');
 Route::post('/dashboard/cart/save-for-later/{product}', [\App\Http\Controllers\Order\CartController::class, 'switchToSaveForLater'])
     ->name('cart.switchToSaveForLater')->middleware('auth');
+// SAVE FOR LATER
+Route::post('/dashboard/cart/save-for-later/{product}', [SaveForLaterController::class, 'switchToSaveForLater'])
+    ->name('cart.switchToSaveForLater')->middleware('auth');
+Route::delete('/dashboard/cart/switch-to-cart/{product}', [SaveForLaterController::class, 'destroy'])
+    ->name('saveForLater.destroy')->middleware('auth');
+Route::post('/dashboard/cart/switch-to-cart/{product}', [SaveForLaterController::class, 'switchToCart'])
+    ->name('saveForLater.switchToCart')->middleware('auth');
+
 
 // SHIPMENT ROUTE
 Route::get('dashboard/cart/shipment', [\App\Http\Controllers\Order\OrderController::class, 'shipment'])
@@ -115,7 +124,7 @@ Route::group(['middleware' => ['role:super-admin']], function () {
         Route::resource('/posts', PostController::class);
         Route::resource('/advertisements', AdvertisementController::class);
 
-        Route::resource('/admin-orders', AdminOrderController::class);
+        Route::resource('/admin-orders', AdminOrderController::class)->names('admin-orders');
         Route::post('order_status', [\App\Http\Controllers\Admin\AdminOrderController::class, 'orderStatus'])
             ->name('admin-orders.status');
 

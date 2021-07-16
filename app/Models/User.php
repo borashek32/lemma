@@ -80,8 +80,8 @@ class User extends Authenticatable
         return $this->morphMany(Config::get('comments.model'), 'commenter')->where('approved', true);
     }
 
-    protected function addresses()
+    protected function address()
     {
-        return $this->hasMany(Address::class);
+        return $this->hasOne(Address::class);
     }
 }

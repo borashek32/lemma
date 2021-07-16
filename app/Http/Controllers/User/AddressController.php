@@ -10,95 +10,60 @@ use Illuminate\Support\Facades\Auth;
 
 class AddressController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function index()
     {
-        $user = Auth::user();
-//        $user_contacts = Address::where('user_id', $user_id);
+        $user    = Auth::user();
+        $address = Address::where('user_id', $user->id)->first();
 
-        return view('profile.addresses.index', compact('user'));
+        return view('profile.addresses.index', compact('address'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
     public function create()
     {
         return view('profile.addresses.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
     public function store(ValidateAddressForm $request)
     {
-        $user_contact = new Address();
-        $user_contact->address    =   $request->address;
-        $user_contact->user_id    =   auth()->id();
-        $user_contact->notes      =   $request->notes;
-        $user_contact->phone      =   $request->phone;
-        $user_contact->save();
+        $address = new Address();
+        $address->shipping_fullname      =   $request->shipping_fullname;
+        $address->shipping_city          =   $request->shipping_city;
+        $address->shipping_postcode      =   $request->shipping_postcode;
+        $address->shipping_address       =   $request->shipping_address;
+        $address->shipping_phone         =   $request->shipping_phone;
+        $address->user_id                =   auth()->id();
+
+        $address->save();
 
         return redirect('/addresses')
             ->with('success', 'Новый адрес был успешно добавлен');
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
-     */
-    public function edit(Address $address)
-    {
-        return view('profile.addresses.edit', compact('address'));
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(ValidateAddressForm $request, Address $address)
     {
-        $address->address = $request->address;
-        $address->phone = $request->phone;
-        $address->notes = $request->notes;
-        $address->user_id = $request->user_id;
+        $address->shipping_fullname = $request->shipping_fullname;
+        $address->shipping_city     = $request->shipping_city;
+        $address->shipping_postcode = $request->shipping_postcode;
+        $address->shipping_address  = $request->shipping_address;
+        $address->shipping_phone    = $request->shipping_phone;
+        $address->user_id           = $request->user_id;
+
         $address->save();
 
         return redirect('/addresses')
             ->with('success', 'Новый адрес был успешно обновлен');
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    public function show($id)
+    {
+        //
+    }
+
+    public function edit(Address $address)
+    {
+        return view('profile.addresses.edit', compact('address'));
+    }
+
     public function destroy(Address $address)
     {
         $address->delete();

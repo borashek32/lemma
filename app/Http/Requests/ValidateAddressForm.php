@@ -24,9 +24,12 @@ class ValidateAddressForm extends FormRequest
     public function rules()
     {
         return [
-            'address'        =>    'required',
-            'phone'          =>    'required',
-            'user_id'        =>    'required'
+            'shipping_fullname'      =>    'required',
+            'shipping_city'          =>    'required',
+            'user_id'                =>    'required',
+            'shipping_postcode'      =>    'required',
+            'shipping_address'       =>    'required',
+            'shipping_phone'         =>    'required',
         ];
     }
 

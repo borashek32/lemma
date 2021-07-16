@@ -33,6 +33,7 @@
                     </svg>
                 </div>
             </div>
+            @if(\App\Models\Comment::all()->count() > 0)
             <table class="table-fixed w-full">
                 <thead>
                 <tr class="bg-gray-100">
@@ -64,6 +65,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>Пользователи пока не оставили комментариев</p>
+            @endif
         </div>
     </div>
 </div>

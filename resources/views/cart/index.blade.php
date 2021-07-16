@@ -4,6 +4,7 @@
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 leading-tight">
             {{ __('Корзина') }}
+            ({{ Cart::instance('default')->count() }})
         </h2>
     </x-slot>
 
@@ -15,7 +16,7 @@
         </div>
     </div>
 
-{{--    @include('includes.cart.save-for-later')--}}
+    @include('includes.cart.save-for-later')
 
 </x-app-layout>
 

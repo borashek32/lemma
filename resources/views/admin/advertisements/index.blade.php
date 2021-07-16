@@ -30,7 +30,7 @@
                     </a>
                 </div>
             </div>
-
+            @if(\App\Models\Advertisement::all()->count() > 0)
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">
@@ -72,6 +72,9 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+            <p>Рекламных объявлений пока не добавлено</p>
+            @endif
         </div>
     </div>
 </div>

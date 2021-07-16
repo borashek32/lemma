@@ -15,7 +15,7 @@ class CreateShipmentsTable extends Migration
     {
         Schema::create('shipments', function (Blueprint $table) {
             $table->id();
-            $table->string('office_address');
+            $table->string('shipment_method');
             $table->timestamps();
         });
     }

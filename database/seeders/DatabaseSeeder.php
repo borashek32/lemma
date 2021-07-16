@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
 
     public function run()
     {
+        $this->call(ShipmentSeeder::class);
         $this->call(RequisiteSeeder::class);
 //        $this->call(PermissionsSeeder::class);
         $this->call(ContactSeeder::class);
@@ -21,13 +22,13 @@ class DatabaseSeeder extends Seeder
         $this->call(RoleSeeder::class);
         $this->call(UserSeeder::class);
         $this->call(MemberSeeder::class);
-        $this->call(TagSeeder::class);
+//        $this->call(TagSeeder::class);
         $this->call(ModelHasRolesSeeder::class);
-        \App\Models\User::factory(10)->create();
-        \App\Models\Category::factory(10)->create();
-        \App\Models\Post::factory(40)->create();
-        \App\Models\Product::factory(100)->create();
-        \App\Models\Advertisement::factory(4)->create();
-        \App\Models\PostTag::factory(100)->create();
+//        \App\Models\User::factory(10)->create();
+//        \App\Models\Category::factory(10)->create();
+//        \App\Models\Post::factory(40)->create();
+//        \App\Models\Product::factory(100)->create();
+//        \App\Models\Advertisement::factory(4)->create();
+        //\App\Models\PostTag::factory(100)->create();
     }
 }

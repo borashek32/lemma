@@ -34,7 +34,8 @@
 {{--                    @include('includes.admin.categories-posts')--}}
 {{--                </div>--}}
             </div>
-            <table class="table-fixed w-full">
+            @if(\App\Models\Post::all()->count() > 0)
+                <table class="table-fixed w-full">
                 <thead>
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">Категория</th>
@@ -70,6 +71,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>В блоге пока нет постов.</p>
+            @endif
             <div class="mt-4">
                 {{ $posts->links() }}
             </div>

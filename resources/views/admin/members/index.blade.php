@@ -30,7 +30,7 @@
                     </a>
                 </div>
             </div>
-
+            @if(\App\Models\Member::all()->count() > 0)
             <table class="table-fixed w-full">
                 <thead>
                     <tr class="bg-gray-100">
@@ -81,6 +81,9 @@
                     @endforeach
                 </tbody>
             </table>
+            @else
+                <p>Информация о сотрудниках пока не добавлена</p>
+            @endif
         </div>
     </div>
 </div>

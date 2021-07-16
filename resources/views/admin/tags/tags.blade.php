@@ -34,7 +34,8 @@
                     </svg>
                 </div>
             </div>
-            <table class="min-w-full">
+            @if(\Spatie\Tags\Tag::all()->count() > 0)
+                <table class="min-w-full">
                 <thead>
                 <tr class="bg-gray-100">
                     <th class="px-6 py-3 border-b-2 border-gray-300 text-left text-sm leading-4 tracking-wider">No.</th>
@@ -57,6 +58,9 @@
                 @endforeach
                 </tbody>
             </table>
+            @else
+                <p>Теги пока не добавлены.</p>
+            @endif
             <div class="mt-4">
                 {{ $tags->links() }}
             </div>
